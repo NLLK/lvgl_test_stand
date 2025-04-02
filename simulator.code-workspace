@@ -26,7 +26,15 @@
 		"cmake.configureOnOpen": true,
 		"files.associations": {
 			"glob.h": "c",
-			"lvgl.h": "c"
+			"lvgl.h": "c",
+			"gui.h": "c",
+			"lvgl_private.h": "c",
+			"lv_version.h": "c",
+			"lv_global.h": "c",
+			"lv_draw_image_private.h": "c",
+			"lv_demo_widgets.h": "c",
+			"lv_draw_triangle.h": "c",
+			"lv_demos.h": "c"
 		},
 	},
 	// tasks.json section

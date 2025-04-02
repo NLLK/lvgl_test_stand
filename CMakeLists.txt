@@ -84,8 +84,12 @@ if(USE_FREERTOS)
     target_link_libraries(main freertos_config FreeRTOS)
 else()
     add_executable(main
-        ${PROJECT_SOURCE_DIR}/main/src/main.c
+        ${PROJECT_SOURCE_DIR}/main/src/main.cpp
         ${PROJECT_SOURCE_DIR}/main/src/mouse_cursor_icon.c
+        ${PROJECT_SOURCE_DIR}/main/src/new_prj/gui.cpp
+        ${PROJECT_SOURCE_DIR}/main/src/new_prj/icons/co2_icon.c
+        ${PROJECT_SOURCE_DIR}/main/src/new_prj/icons/humidity_icon.c
+        ${PROJECT_SOURCE_DIR}/main/src/new_prj/icons/temperature_icon.c
     )
 endif()
 
