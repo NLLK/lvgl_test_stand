@@ -76,6 +76,7 @@ lv_obj_t* gui_draw_room_parameter(lv_obj_t* parent, GUI_RoomParameter paramType,
     lv_obj_set_flex_align(container, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
     lv_obj_set_style_pad_all(container, 0, 0);
     lv_obj_set_style_border_width(container, 0, 0);
+    lv_obj_set_style_pad_column(container, 0, 0);  // Remove padding between flex items
     lv_obj_clear_flag(container, LV_OBJ_FLAG_SCROLLABLE);
 
     // Create image (original size 44x44, scaled by 175)
@@ -83,21 +84,31 @@ lv_obj_t* gui_draw_room_parameter(lv_obj_t* parent, GUI_RoomParameter paramType,
     LV_IMG_DECLARE(co2_icon);
     lv_img_set_src(img, &co2_icon);
 
-    // Set image scaling (175 = 1.75 scale factor)
     lv_img_set_zoom(img, 175);
+    lv_obj_set_size(img, 25,25);
+    lv_obj_set_style_pad_all(img, 0, 0);
+    lv_obj_set_style_margin_all(img, 0, 0);
 
     // Center the image vertically
     lv_obj_set_style_align(img, LV_ALIGN_LEFT_MID, 0);
 
     // Create label for text
     lv_obj_t* label = lv_label_create(container);
+    lv_obj_set_style_pad_all(label, 0, 0);
+    lv_obj_set_style_margin_all(label, 0, 0);
     lv_label_set_text(label, text);
     lv_obj_set_style_text_font(label, &lv_font_montserrat_20, 0);
-    lv_obj_set_style_pad_left(label, 8, 0);  // Add some space between image and text
-
-    // Center the text vertically and align to right
-    lv_obj_set_flex_grow(label, 1);  // Take remaining space
     lv_obj_set_style_text_align(label, LV_TEXT_ALIGN_RIGHT, 0);
+    lv_obj_set_flex_grow(label, 1);
+    // lv_obj_set_style_margin_all(label, 0, 0);
+
+    lv_obj_t* label_units = lv_label_create(container);
+    lv_label_set_text_static(label_units, "ppm");
+    lv_obj_set_style_text_font(label_units, &lv_font_montserrat_12, 0);
+    lv_obj_set_style_margin_all(label_units, 0, 0);
+    lv_obj_set_style_pad_all(label_units, 0, 0);
+    // lv_obj_set_style_pad_left(label_units, -5, 0);  // Add some space between image and text
+
 
     return container;
 }
